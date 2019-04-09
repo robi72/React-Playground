@@ -1,22 +1,22 @@
 import React, { CSSProperties } from 'react';
 import { centeredContent, fullscreenAbsolute } from '../../css';
+import { Link } from 'react-router-dom';
 
 interface Props {
-    id: string,
-    onClick: (id: string) => void;
+    view: string
 }
 
 /** React function component */
 export default function NavigationItem(props: Props) {
     
-    const imageSrc = `../assets/${props.id}.jpg`;
-    const onClick = () => props.onClick(props.id)
+    const url = `${props.view}`;
+    const imageSrc = `../assets/${props.view}.jpg`;
 
     return (
-        <div style={{ ...gridItem, ...centeredContent }} onClick={onClick}>
+        <Link to={url} style={{ ...gridItem, ...centeredContent }}>
             <img src={imageSrc} style={fullscreenAbsolute} />
-            <h1 style={{ ...centeredAbsolute, ...appearance}}>{props.id}</h1>
-        </div>
+            <h1 style={{ ...centeredAbsolute, ...appearance}}>{props.view}</h1>
+        </Link>
     );
 }
 

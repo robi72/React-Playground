@@ -1,13 +1,14 @@
 import React, { CSSProperties } from 'react';
 import { fullscreenAbsolute } from '../../css';
+import { RouteComponentProps } from 'react-router-dom';
 
-interface Props {
+interface Props extends RouteComponentProps {
     id: string
 }
 
 export default function DetailView(props: Props) {
-    
-    const imageSrc = `../assets/${props.id}.jpg`;
+    const view = props.match.url.substr(1);
+    const imageSrc = `../assets/${view}.jpg`;
 
     return (
         <div style={container}>
@@ -15,6 +16,7 @@ export default function DetailView(props: Props) {
         </div>
     );
 }
+
     
 const container: CSSProperties = {
     position: 'relative',
