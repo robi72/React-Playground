@@ -1,33 +1,33 @@
 import React, { CSSProperties } from 'react';
-import { centeredContent } from '../css';
+import { centeredContent, fullscreenAbsolute } from '../../css';
+
+interface Props {
+    id: string,
+    onClick: (id: string) => void;
+}
 
 /** React function component */
-export default function SectionItem(props: Props) {
+export default function NavigationItem(props: Props) {
+    
     const imageSrc = `../assets/${props.id}.jpg`;
+    const onClick = () => props.onClick(props.id)
 
     return (
-        <div style={{ ...gridItem, ...centeredContent }}>
-            <img src={imageSrc} style={fullscreen} />
+        <div style={{ ...gridItem, ...centeredContent }} onClick={onClick}>
+            <img src={imageSrc} style={fullscreenAbsolute} />
             <h1 style={{ ...centeredAbsolute, ...appearance}}>{props.id}</h1>
         </div>
     );
-}
-
-interface Props {
-    id: string
 }
 
 const gridItem: CSSProperties = {
     position: 'relative',
     margin: '0.5em',
     background: '#808080',
-    height: '100%'
-}
-
-const fullscreen: CSSProperties = {
-    width: '100%',
     height: '100%',
-    objectFit: 'cover'
+    borderRadius: '10px',
+    overflow: 'hidden',
+    cursor: 'pointer'
 }
 
 const centeredAbsolute: CSSProperties = {
