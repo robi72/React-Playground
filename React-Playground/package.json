@@ -18,7 +18,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
-    "react-spinners": "0.5.1"
+    "react-spinners": "^0.5.1"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",

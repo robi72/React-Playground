@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './layout';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Spinner from '.spinner';
+import Spinner from './spinner';
 
 /**
  * Application top level component. This is a good place for future
