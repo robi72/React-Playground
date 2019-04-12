@@ -1,5 +1,7 @@
 import React, { CSSProperties } from 'react';
-import NavigationItem from './navigationItem';
+import ViewSection from './viewSection';
+import ErrorBoundary from '../errorBoundary';
+import ImageLink from './ImageLink';
 
 interface Props {
     detailViews: string[]
@@ -10,8 +12,11 @@ export default function MasterView(props: Props) {
 
     return (
         <div style={container}>
-            {props.detailViews.map((view) =>
-                <NavigationItem key={view} view={view} />)}
+            {props.detailViews.map((view) => (
+                <ViewSection key={view}>
+                    <ImageLink view={view}/>
+                </ViewSection>
+            ))}
         </div>
     );
 }

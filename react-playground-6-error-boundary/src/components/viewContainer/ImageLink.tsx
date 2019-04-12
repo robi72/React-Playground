@@ -1,32 +1,32 @@
 import React, { CSSProperties } from 'react';
 import { centeredContent, fullscreenAbsolute } from '../../css';
 import { Link } from 'react-router-dom';
+import { testErrorBoundary } from '../errorBoundary';
 
 interface Props {
     view: string
 }
 
 /** React function component */
-export default function NavigationItem(props: Props) {
+export default function ImageLink(props: Props) {
     
     const url = `${props.view}`;
     const imageSrc = `../assets/${props.view}.jpg`;
 
+    if (props.view === 'forest') {
+        testErrorBoundary();
+    }
+
     return (
-        <Link to={url} style={{ ...gridItem, ...centeredContent }}>
+        <Link to={url} style={{ ...linkAppearance, ...centeredContent }}>
             <img src={imageSrc} style={fullscreenAbsolute} />
             <h1 style={{ ...centeredAbsolute, ...appearance}}>{props.view}</h1>
         </Link>
     );
 }
 
-const gridItem: CSSProperties = {
-    position: 'relative',
-    margin: '0.5em',
-    background: '#808080',
+const linkAppearance: CSSProperties = {
     height: '100%',
-    borderRadius: '10px',
-    overflow: 'hidden',
     cursor: 'pointer'
 }
 

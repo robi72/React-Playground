@@ -4,9 +4,9 @@
   "description": "",
   "scripts": {
     "app": "npm-run-all --parallel build-watch live-server",
+    "build": "webpack-cli",
     "build-watch": "webpack-cli --watch",
-    "live-server": "live-server --entry-file=index.html --no-browser",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "live-server": "live-server --entry-file=index.html --no-browser"
   },
   "author": "David Jensen",
   "license": "ISC",
@@ -14,7 +14,6 @@
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
-    "live-server": "^1.2.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",

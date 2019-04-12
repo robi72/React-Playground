@@ -2,7 +2,6 @@ import React, { Component, CSSProperties } from 'react';
 import Navbar from './navbar';
 import ViewContainer from './viewContainer/viewContainer';
 import { fullScreen } from '../css';
-import { RouteComponentProps } from 'react-router-dom';
 
 interface Props {}
 
