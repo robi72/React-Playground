@@ -13,10 +13,6 @@ export default function ImageLink(props: Props) {
     const url = `${props.view}`;
     const imageSrc = `../assets/${props.view}.jpg`;
 
-    if (props.view === 'forest') {
-        testErrorBoundary();
-    }
-
     return (
         <Link to={url} style={{ ...linkAppearance, ...centeredContent }}>
             <img src={imageSrc} style={fullscreenAbsolute} />

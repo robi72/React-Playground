@@ -12,10 +12,24 @@
             margin: 0;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
+        #modal-root {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            color: rgb(230, 230, 230);
+            -webkit-backdrop-filter: blur(10px);
+        }
     </style>
 </head>
 <body>
-    <div id="app-container"></div>
+    <div id="app-root"></div>
+    
+    <!-- Will be inserted via React Portal when Modal component is mounted -->
+    <!-- <div id="modal-root"></div> -->
 
     <!-- Dependencies -->
     <script src="./node_modules/react/umd/react.development.js"></script>

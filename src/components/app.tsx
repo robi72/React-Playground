@@ -14,7 +14,9 @@ export default function App() {
         <Suspense fallback={<Spinner/>}>
             <Router>
                 <ErrorBoundary>
-                    <Layout/>
+                    <Suspense fallback = {<Monkey/>}>
+                        <Layout/>
+                    </Suspense>   
                 </ErrorBoundary>
             </Router>
         </Suspense>
