@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Spinner from '../spinner';
 
-const MasterView = React.lazy(() => import(/* webpackChunkName: "masterView" */ './MasterView'));
+const MasterView = React.lazy(() => import(/* webpackChunkName: "masterView" */ './masterView'));
 const DetialView = React.lazy(() => import(/* webpackChunkName: "detailView" */ './detailView'));
 
 /** React function component */

@@ -23,6 +23,7 @@ const gridItem: CSSProperties = {
     margin: '0.5em',
     background: '#808080',
     height: '100%',
-    borderRadius: '10px',
+    borderRadius: '15px',
     overflow: 'hidden',
+    boxShadow: '0 0 2px white, 2px 2px 15px black'
 }

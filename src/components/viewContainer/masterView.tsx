@@ -1,6 +1,5 @@
 import React, { CSSProperties } from 'react';
 import ViewSection from './viewSection';
-import ErrorBoundary from '../errorBoundary';
 import ImageLink from './ImageLink';
 
 interface Props {

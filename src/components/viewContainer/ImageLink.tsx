@@ -1,7 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { centeredContent, fullscreenAbsolute } from '../../css';
 import { Link } from 'react-router-dom';
-import { testErrorBoundary } from '../errorBoundary';
 
 interface Props {
     view: string
