@@ -1,7 +1,7 @@
 import React, { Component, CSSProperties } from 'react';
-import { fullscreenAbsolute, fullScreen, centeredContent } from '../../css';
+import { fullscreenAbsolute, fullScreen, centeredContent } from '../../../css';
 import { RouteComponentProps } from 'react-router-dom';
-import Modal from '../modal';
+import Modal from '../../modal';
 
 interface Props extends RouteComponentProps {
     id: string
