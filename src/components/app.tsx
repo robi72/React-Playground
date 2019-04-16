@@ -19,7 +19,7 @@ interface State {
  */
 export default class App extends Component<Props, State> {
     state: State = {
-        isWelcomeScreenEnabled: true
+        isWelcomeScreenEnabled: false
     }
 
     private removeWelcomeScreen = () => {
