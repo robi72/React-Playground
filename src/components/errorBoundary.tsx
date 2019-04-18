@@ -39,7 +39,7 @@ export function testErrorBoundary() {
 }
 
 const appearance: CSSProperties = {
-    background: 'white',
-    color: '#1E1E1E',
+    background: '#EEEEEE',
+    color: '#0A0A0A',
     height: '100%'
 };

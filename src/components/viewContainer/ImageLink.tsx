@@ -34,6 +34,6 @@ const centeredAbsolute: CSSProperties = {
 }
 
 const appearance: CSSProperties = {
-    color: '#1E1E1E',
+    color: '#0A0A0A',
     textShadow: '0 0 3px white'
 }

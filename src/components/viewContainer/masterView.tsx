@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import ViewSection from './viewSection';
-import ImageLink from './ImageLink';
+import ImageLink from './imageLink';
 
 interface Props {
     detailViews: string[]
@@ -24,5 +24,5 @@ const container: CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
-    margin: '0.5em'
+    margin: '1em'
 }

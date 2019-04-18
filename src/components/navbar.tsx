@@ -1,32 +1,49 @@
 import React, { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext, ThemedCSSProperties } from '../contexts/themeContext';
+import ThemeToggleButton from './themeToggleButton';
 
 /** React function component */
 export default function Navbar() {
 
     return (
-        <div style={navbar}>
-            <Link to="/" style={navbarItem}>React Playground</Link>
-        </div>
+        <ThemeContext.Consumer>
+            {({ theme }) => (
+                <div style={navbar(theme)}>
+                    <Link to="/" style={navbarItem(theme)}>
+                        <span style={header}>React<span className="sm-hidden"> Playground</span></span>
+                    </Link>
+                    <div style={navbarItem(theme)}>
+                        <ThemeToggleButton/>
+                    </div>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     );
 }
 
-const navbar: CSSProperties = {
+const navbar: ThemedCSSProperties = (theme) => ({
     height: '4em',
     minHeight: '4em',
-    background: 'black',
+    background: theme.background.primary,
     display: 'flex',
+    justifyContent: 'space-between',
     alignItems: 'stretch',
-    padding: '0 1em'
-};
+    padding: '0 1em',
+    boxShadow: `0 -10px 30px black`
+})
 
-const navbarItem: CSSProperties = {
-    fontSize: '1.7em',
+const navbarItem: ThemedCSSProperties = (theme) => ({
     margin: 0,
     padding: 0,
     display: 'flex',
     alignItems: 'center',
-    cursor: 'pointer',
     textDecoration: 'none',
-    color: '#E1E1E1',
-};
+    color: theme.foreground.primary,
+})
+
+const header: CSSProperties = {
+    fontSize: '1.7em',
+    fontWeight: 'bold',
+    cursor: 'pointer'
+}

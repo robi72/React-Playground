@@ -1,48 +1,47 @@
-import React, { Component, CSSProperties } from "react";
-import Modal from "../../modal";
+import React, { CSSProperties } from 'react';
+import { ThemedCSSProperties, ThemeContext } from '../../../contexts/themeContext';
+import Button from '../../button';
 
-interface Props {
+interface Props {
     view: string
-}
-interface State {
-    isModalOpen: boolean
+    openModal: () => void;
 }
 
-export default class HeaderSection extends Component<Props,State>   {
+export default function HeaderSection(props: Props) {
 
-    state: State = {
-        isModalOpen: false
+    const color: CSSProperties = {
+        color: selectColor(props.view)
     }
 
-    openModal = () => this.setState({ isModalOpen: true });
-    closeModal = () => this.setState({ isModalOpen: false });
-
-    render() {
-        return (
-            <div style={container}>
-                <h1>{this.props.view}</h1>
-                <button onClick={this.openModal}>Open Modal</button>
-                {
-                    this.state.isModalOpen ? (
-                        <Modal persistent shouldClose={this.closeModal}>
-                            <h3>Modal opened from <span style={highlighted}>{this.props.view}</span> view</h3>
-                            <button onClick={this.closeModal}>Close modal</button>
-                        </Modal>
-                    ) : null
-                }
-            </div>
-        )
+    function selectColor(view: string) {
+        switch(view) {
+            case 'forest': return '#63b323'
+            case 'sky': return '#5fb2f6'
+            case 'desert': return '#e7a11f'
+        }
     }
-
+    
+    return (
+        <ThemeContext.Consumer>
+            {({ theme }) => (
+                <div style={headerSegment}>
+                    <h2 style={{ ...header(theme), ...color }}>
+                        {props.view.toUpperCase()}
+                    </h2>
+                    <Button size="small" onClick={props.openModal}>Open Modal</Button>
+                </div>
+            )}
+        </ThemeContext.Consumer>
+    )
 }
 
-const highlighted: CSSProperties = {
-    color: 'orange'
-}
-
-const container: CSSProperties = {
+const headerSegment: CSSProperties = {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '100%'
-
+    alignItems: 'center'
 }
+
+
+const header: ThemedCSSProperties = (theme) => ({
+    textShadow: `0px 0px 2px ${theme.background.primary}`
+})

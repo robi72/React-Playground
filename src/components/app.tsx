@@ -1,10 +1,9 @@
-import React, { Suspense, Component, CSSProperties } from 'react';
+import React, { Suspense, Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Spinner from './spinner';
 import ErrorBoundary from './errorBoundary';
 import { WelcomeScreen } from './welcomeScreen';
-import { centeredContent, fullScreen } from '../css';
 import { Monkey } from './monkey';
+import ThemeProvider from '../contexts/themeProvider';
 
 const Layout = React.lazy(() => import(/* webpackChunkName: "layout" */ './layout'));
 
@@ -22,11 +21,11 @@ export default class App extends Component<Props, State> {
         isWelcomeScreenEnabled: false
     }
 
-    private removeWelcomeScreen = () => {
+    removeWelcomeScreen = () => {
         this.setState({ isWelcomeScreenEnabled: false });
     }
 
-    private get WelcomeScreen() {
+    get WelcomeScreen() {
         if (this.state.isWelcomeScreenEnabled) {
             return <WelcomeScreen dismissed={this.removeWelcomeScreen}/>
         }
@@ -34,16 +33,16 @@ export default class App extends Component<Props, State> {
 
     render () {
         return (
-            <Suspense fallback={<Spinner/>}>
+            <ErrorBoundary>
                 <Router>
-                    <ErrorBoundary>
+                    <ThemeProvider>
                         {this.WelcomeScreen}
                         <Suspense fallback={<Monkey/>}>
                             <Layout/>
                         </Suspense>
-                    </ErrorBoundary>
+                    </ThemeProvider>
                 </Router>
-            </Suspense>
+            </ErrorBoundary>
         )
     }
 }

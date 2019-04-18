@@ -20,7 +20,7 @@ export default class ViewSection extends Component {
 
 const gridItem: CSSProperties = {
     position: 'relative',
-    margin: '0.5em',
+    margin: '2em',
     background: '#808080',
     height: '100%',
     borderRadius: '15px',

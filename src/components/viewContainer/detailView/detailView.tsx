@@ -1,57 +1,84 @@
 import React, { Component, CSSProperties } from 'react';
-import { fullscreenAbsolute, fullScreen, centeredContent } from '../../../css';
+import { fullscreenAbsolute } from '../../../css';
 import { RouteComponentProps } from 'react-router-dom';
+import Modal from '../../modal';
 import HeaderSection from './headerSection';
 import TextSection from './textSection';
-import { ImageSection } from './imageSection';
+import ImageSection from './imageSection';
+import { ThemedCSSProperties, ThemeContext } from '../../../contexts/themeContext';
+import Button from '../../button';
 
-interface Props extends RouteComponentProps {
-    id: string
+interface Props extends RouteComponentProps {}
+
+interface State {
+    isModalOpen: boolean
 }
 
+export default class DetailView extends Component<Props, State> {
 
+    state: State = {
+        isModalOpen: false
+    }
 
-export default class DetailView extends Component<Props> {
-
-    
-
-    private get view() {
+    get view() {
         return this.props.match.url.substr(1);
     }
 
-    private get imageSrc() {
+    get imageSrc() {
         return `../assets/${this.view}.jpg`;
     }
 
-    
+    openModal = () => this.setState({ isModalOpen: true });
+    closeModal = () => this.setState({ isModalOpen: false });
 
     render() {
         return (
-            <div style={container}>
-                <img src={this.imageSrc} style={{ ...fullscreenAbsolute }}/>
-                <div style={{ ...fullscreenAbsolute }}>
-                    
-                    <div style={content}>
-                        <HeaderSection view={this.view}/>
-                        <TextSection/>
-                        <ImageSection/>
-                    </div>
+            <ThemeContext.Consumer>
+                {({ theme }) => (
+                    <div style={container}>
+                        <img src={this.imageSrc} style={{ ...fullscreenAbsolute }}/>
+                        <div style={{ ...content(theme), ...fullscreenAbsolute }}>
 
-                </div>
-                
-            </div>
+                            <div style={flexContainer}>
+                                <HeaderSection view={this.view} openModal={this.openModal}/>
+                                <TextSection view={this.view}/>
+                                <ImageSection view={this.view}/>
+                            </div>
+
+                        </div>
+                        {
+                            this.state.isModalOpen ? (
+                                <Modal persistent shouldClose={this.closeModal}>
+                                    <h3>Modal opened from <span style={highlighted}>{this.view}</span> view</h3>
+                                    <Button onClick={this.closeModal}>Close modal</Button>
+                                </Modal>
+                            ) : null
+                        }
+                    </div>
+                )}
+            </ThemeContext.Consumer>
         );
     }
 }
 
-
-
-const content: CSSProperties = {
-    margin: 10
+const highlighted: CSSProperties = {
+    color: 'orange'
 }
-    
+
+const content: ThemedCSSProperties = (theme) => ({
+    zIndex: 10,
+    background: `${theme.background.primary}B3`,
+    overflowY: 'auto'
+})
+
 const container: CSSProperties = {
     position: 'relative',
     width: '100%',
     height: '100%'
+}
+
+const flexContainer: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '1em'
 }
