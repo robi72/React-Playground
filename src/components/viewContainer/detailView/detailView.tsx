@@ -22,6 +22,7 @@ export default class DetailView extends Component<Props, State> {
 
     get view() {
         return this.props.match.url.substr(1);
+        /* return 'cat'; */
     }
 
     get imageSrc() {
