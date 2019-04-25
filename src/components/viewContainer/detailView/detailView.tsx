@@ -7,7 +7,7 @@ import TextSection from './textSection';
 import ImageSection from './imageSection';
 import { ThemedCSSProperties, ThemeContext } from '../../../contexts/themeContext';
 import Button from '../../button';
-
+import SearchField from '../searchField';
 interface Props extends RouteComponentProps {}
 
 interface State {
@@ -25,9 +25,9 @@ export default class DetailView extends Component<Props, State> {
         /* return 'cat'; */
     }
 
-    get imageSrc() {
+    /* get imageSrc() {
         return `../assets/${this.view}.jpg`;
-    }
+    } */
 
     openModal = () => this.setState({ isModalOpen: true });
     closeModal = () => this.setState({ isModalOpen: false });
@@ -37,7 +37,7 @@ export default class DetailView extends Component<Props, State> {
             <ThemeContext.Consumer>
                 {({ theme }) => (
                     <div style={container}>
-                        <img src={this.imageSrc} style={{ ...fullscreenAbsolute }}/>
+                        {/* <img src={this.imageSrc} style={{ ...fullscreenAbsolute }}/> */}
                         <div style={{ ...content(theme), ...fullscreenAbsolute }}>
 
                             <div style={flexContainer}>
